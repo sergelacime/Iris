@@ -1,0 +1,75 @@
+{% extends "home.html" %}
+{% block file %}
+<input value="{{report.filename}}" type="text" class="form-control" id="describ" readonly>
+{% endblock %}
+{% block btnGroup %}
+<a href="{% url 'NewR' %}" class="btn btn-outline-dark" style="margin-bottom: 3%;"><i class="bi bi-box-arrow-left"></i></a>
+<button onclick="update()" class="btn btn-danger" style="margin-bottom: 3%;">Start</button> 
+
+{% endblock%}
+{% block script %}
+<script>
+
+  const prog = document.getElementById("myprogressBar");
+  const textgen = document.getElementById("textgen");
+  prog.style.display = "none";
+  
+  function update() {
+    prog.style.display = "block";
+    prog.style.backgroundColor = "red";
+    var element = document.getElementById("myprogressBar");
+    var width = 0.5;
+    var valeur = document.getElementById("valeur").value; // Obtenir la valeur de l'élément à traiter
+    var identity = setInterval(scene, 10);
+    function scene() {
+      if (width >= 100) {
+        clearInterval(identity);
+  
+        // Afficher "Patienter..."
+        var pourcentage = document.getElementById("pourcentage");
+        pourcentage.innerHTML = "Waiting...";
+        if (pourcentage.innerHTML === "Waiting...") {
+        let index = 0;
+
+        function changeColor() {
+          if (pourcentage.innerHTML === "Done !") {
+            prog.style.backgroundColor = "green";
+            width = width + 20
+          } else {
+            const colors = ["#F35B5B ", "#FE2121","#F78383","#E27474"];
+            prog.style.backgroundColor = colors[index];
+            index = (index + 1) % colors.length;
+          }
+        }
+        const col = setInterval(changeColor, 1000);
+        }
+        
+  
+        // Envoyer une requête AJAX au serveur Django pour exécuter la fonction avec la valeur de l'élément
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/executer-fonction/?valeur=" + "report."+valeur, true);
+        xhr.onload = function() {
+  
+          // Mettre à jour le champ approprié avec le résultat
+          var resultat = JSON.parse(xhr.responseText)["resultat"];
+          var champ = document.getElementById("mon-champ");
+          champ.value = resultat;
+  
+          // Afficher "Opération terminée !"
+          pourcentage.innerHTML = "Done !";
+          textgen.style.display = "block";
+        };
+        xhr.send();
+      } else {
+        width =  width+ 0.5;
+        element.style.width = width + '%';
+        var pourcentage = document.getElementById("pourcentage");
+        pourcentage.innerHTML = "" + Math.round(width) + "%";
+         // Alterner entre deux couleurs pour la couleur de fond du progresse bar
+      }
+    }
+  }
+  
+
+</script>
+{% endblock %}

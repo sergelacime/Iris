@@ -1,0 +1,27 @@
+{% extends "index2.html" %}
+{% block btn %}
+<a href="{% url 'Acceuil' %}" class="btn btn-primary" id=""><i class="bi bi-mic-fill"></i> Speech to text</a>
+{% endblock %}
+{% block old %}
+{% for r in report %}
+<option value="report.{{r.id}}">{{r.filename}}</option>
+
+{% endfor %}
+{% endblock %}
+{% block oldchat %}
+<select class="custom-select form-control bg-dark text-light rounded-4" id="foo" >
+    <option selected>Choose old Chat</option>
+    {% for r in report %}
+    <option value="{% url 'chatOld' r.id %}">{{r.filename}}</option>
+    {% endfor %}
+</select>
+<script>
+    document.getElementById("foo").onchange = function() {
+        if (this.selectedIndex!==0) {
+            window.location.href = this.value;
+        }        
+    };
+</script>
+{% endblock  %}
+
+<input value="report" type="text" class="form-control" id="reportA" readonly style="display: none;">

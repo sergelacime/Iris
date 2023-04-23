@@ -1,0 +1,430 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Iris - dashboard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  {% comment %} <link href=" 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> {% endcomment %}
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12"></script>
+
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style2.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center " style="display:block;">
+    <div class=" signin hero-container" data-aos="fade-in" id="signin">
+      <div class="row" data-aos="fade-in">
+        <div class="col-md-4" data-aos="fade-in">
+          
+        </div>
+        <div class="col-md-8 container-reponsive" data-aos="fade-in">
+          <div class="card bg-transparent border-0" data-aos="fade-in"  >
+            <div class="card-header text-light">
+              <h4>Login Form</h4>
+            </div>
+            <div class="card-body text-light bg-gradiant">
+              <h4>Sign In</h4>
+              <div class="container row">
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  </div></br>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></br>
+                    <a href="#signup" class="link p text-light" id="btnsignup">or Sign Up</a>
+                  </div></br>
+                  <a href="#welcome" type="submit" class="btn btn-primary" id="valide">Submit</a>
+                  <a type="reset" class="btn btn-danger">Reset</a>
+                </form>
+              </div>
+            </div>
+            
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--     <div class="hero-container" data-aos="fade-in">
+      <h1>Alex Smith</h1>
+      <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
+    </div> ======= -->
+    <div class=" signup hero-container " data-aos="fade-in" style="display:none;" id="signup">
+      <div class="row" data-aos="fade-in">
+        <div class="col-md-4" data-aos="fade-in">
+          
+        </div>
+        <div class="  col-md-8 container-reponsive" data-aos="fade-in">
+          <div class="card bg-transparent border-0" data-aos="fade-in"  >
+            <div class="card-header text-light">
+              <h4>Login Form</h4>
+            </div>
+            <div class="card-body text-light bg-gradiant">
+              <h4>Sign Up</h4>
+              <div class="container row">
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  </div></br>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></br>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password"></br>
+                    <a href="#signin" class="link p text-light" id="btnsignin">or Sign In</a>
+                  </div></br>
+                  <a href="#welcome" type="submit" class="btn btn-primary" id="valide2">Submit</a>
+                  <a type="reset" class="btn btn-danger">Reset</a>
+                </form>
+              </div>
+            </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!--     <div class="hero-container" data-aos="fade-in">
+      <h1>Alex Smith</h1>
+      <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
+    </div> ======= -->
+   
+    {% if a == 1 %} {% block content %}
+    <div class=" welcome hero-container " data-aos="fade-in" style="display:none;" id="welcome">
+      <div class="row" data-aos="fade-in">
+         <div class="col-md-2" data-aos="fade-in">
+          
+        </div> 
+        <div class="  col-md-10 container-reponsive" data-aos="fade-in">
+          <div class="card bg-transparent border-0" data-aos="fade-in"  >
+            <div class="card-header text-light">
+              <h4>Iris, <span class="text-danger"> {{user.username}} </span> </h4>
+            </div>
+            <div class="card-body text-light bg-gradiant">
+              <div class="container row ">
+                <div class="card bg-light text-dark" >
+                  
+                    <div class="card-header">
+                      <a href="#" class="btn btn-danger" id="newR"><i class="bi bi-plus-lg"></i> New</a>
+                      {% block btn %}
+                      <a href="{% url 'NewR' %}" class="btn btn-primary" id=""><i class="bi bi-file-text-fill"></i> Report processing</a>
+                      {% endblock %}
+                    {% comment %} </br></span  style="font-size: 10px;">If the size of your file exceeds 20MB, it is recommended to make a first compression of your file before proceeding to the transcription</span> {% endcomment %}
+                    </div>
+                  
+                    <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                          <div class="card-header">
+                            <div class="container" id="new" >
+                                <div class="row justify-content-center">
+                                  <div class="card w-100 d-flex align-items-stretch border-0" style="width: 24rem; height: 20rem; ">
+
+
+                                    <div class="container" style="padding-top: 2%; ">
+                                      <div class="row justify-content-center">
+                                        <div class="card w-100 d-flex align-items-stretch border-15 justify-content-center align-items-center" style="width: 12rem; height: 10rem;  border-style: dashed;
+                                        border-width: 1px;
+                                        border-color: #29dbf4;">
+                                          <input class="form-control border-0" name="file" type="file" style="padding-top: 7%; padding-bottom: 7%;" accept="audio/*" required></input>
+                                          
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    
+                                    <div class="container" style="padding-top: 2%; ">
+                                      <div class="row justify-content-center">
+                                        <div class="card w-100 d-flex align-items-stretch border-15 justify-content-center align-items-center border-0" style="width: 5rem; height: 4rem;">
+                                          <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text bg-transparent border-0" id="basic-addon1">
+                                                <i class="bi bi-youtube text-danger " style="font-size: px;"></i>
+                                              </span>
+                                            </div>
+                                            {% comment %} <input type="text" class="form-control border-0 " placeholder="Paste youtube link here" aria-label="Username" aria-describedby="basic-addon1" style="background-color: #e5fbfe;"> {% endcomment %}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <div class="col-md-3">
+                                        
+                                      </div>
+                                      <div class="col-md-3">
+                                        
+                                      </div>
+                                      <div class="col-md-3">
+                                      </div>
+                                      <div class="col-md-3">
+                                        <input class="btn btn-danger" type="submit" value="valider">
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                  
+                                </div>
+
+                              </div>
+              
+                          </div>
+                        </form>
+                    <div class="card-body text-dark">
+                      {% comment %} <h5 class="card-title text-dark">Download your old traitement :</h5> {% endcomment %}
+                        
+                      <div class="row" style="padding-top:2%;">
+                        <div class="input-group mb-3">
+                          <select class="custom-select form-control rounded-4" id="select-id" onchange="showTextArea()">
+                            <option selected>Choose old transcrypt</option>
+                            {% block old %}
+                              {% for i in audio %}
+                              <option value="{{i.id}}">{{i.filename}}</option>
+                              {% endfor %}
+                            {% endblock   %}
+                          </select>
+                          {% block oldchat %}
+                          <select class="custom-select form-control bg-dark text-light rounded-4" id="foo" >
+                            <option selected>Choose old Chat</option>
+                            {% for i in audio %}
+                            <option value="{% url 'AudiochatOld' i.id %}">{{i.filename}}</option>
+                            {% endfor %}
+                        </select>
+                        <script>
+                            document.getElementById("foo").onchange = function() {
+                                if (this.selectedIndex!==0) {
+                                    window.location.href = this.value;
+                                }        
+                            };
+                        </script>
+                          {% endblock  %}
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="mx-2">
+                    <h6 style="display: none;" id="downTxt" onclick="saveTextAsFile()" >
+                      <a href="#"  class="text-danger">Download <i class="bi bi-filetype-txt h6" ></i></a>
+                      {% comment %} <a href="{% url 'AudiochatOld' user.id %}" class="btn btn-primary" style="margin-bottom: 1%;">Continue</a> {% endcomment %}
+                    </h6>
+                    
+
+                    <div id="textareaContainer" style="padding-bottom: 3%; display: none;"><textarea  rows="5" class="form-control" id="textarea-id" readonly></textarea></div>     
+              </div>
+            </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>{% endblock %}
+{% endif %}
+
+
+  </section><!-- End Hero -->
+
+
+  <main id="main">
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  {% comment %} <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Iris</span></strong>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">Cime</a>
+      </div>
+    </div>
+  </footer><!-- End  Footer --> {% endcomment %}
+  <script>
+    function saveTextAsFile() {
+      // Récupère le contenu de l'input
+      var textToSave = document.getElementById("textarea-id").value;
+    
+      // Crée un nouveau fichier texte avec le contenu
+      var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+      var fileNameToSaveAs = "mon_fichier.txt";
+    
+      // Crée un objet URL pour le fichier texte
+      var downloadLink = document.createElement("a");
+      downloadLink.download = fileNameToSaveAs;
+      downloadLink.href = window.URL.createObjectURL(textToSaveAsBlob);
+      downloadLink.style.display = "none";
+    
+      // Ajoute l'élément au corps de la page
+      document.body.appendChild(downloadLink);
+    
+      // Clique sur l'élément pour lancer le téléchargement
+      downloadLink.click();
+    
+      // Supprime l'élément de la page
+      document.body.removeChild(downloadLink);
+    }
+
+
+    function showTextArea() {
+      const select = document.querySelector('#select-id');
+      const textarea = document.querySelector('#textarea-id');
+      const textareaContainer = document.getElementById("textareaContainer");
+      const downTxt = document.getElementById("downTxt");
+
+      const option = select.value;
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', `/voir-text/?valeur=${option}`);
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          if (data.resultat) {
+            textareaContainer.style.display = "block";
+            downTxt.style.display = "block";
+            newseq.style.display = "none";
+            textarea.value = data.resultat;
+          } else {
+            textarea.value = '';
+          }
+        } else {
+          console.error('Erreur de requête: ', xhr.status);
+        }
+      };
+      xhr.send();
+    }
+    
+    
+    function downloadFile() {
+        var text = "{{ audio.TextGen.text }}";
+        var filename = "monfichier.txt";
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+</script>
+    
+  
+  {% block scripts %}
+  {% if a == 1 %}
+   <script>
+    const section = document.getElementById("signup");
+    const section2 = document.getElementById("signin");
+    const section3 = document.getElementById("welcome");
+    const newRes = document.getElementById("newR");
+    const newseq = document.getElementById("new");
+    const textareaContainer = document.getElementById("textareaContainer");
+    const downTxt = document.getElementById("downTxt");
+
+    section2.style.display = "none";
+    section.style.display = "none";
+    section3.style.display = "block";
+
+    newRes.addEventListener("click", function() {
+      newseq.style.display = "block";
+      textareaContainer.style.display = "none";
+      downTxt.style.display = "none";
+    });
+  </script>
+  {% else %}
+  <script>
+    const getstart = document.getElementById("btnsignup");
+    const getstart2 = document.getElementById("btnsignin");
+    const getstart3 = document.getElementById("valide");
+    const getstart4 = document.getElementById("valide2");
+    const section = document.getElementById("signup");
+    const section2 = document.getElementById("signin");
+    const section3 = document.getElementById("welcome");
+
+
+    getstart.addEventListener("click", function() {
+      section.style.display = "block";
+      section2.style.display = "none";
+    });
+
+    getstart2.addEventListener("click", function() {
+      section2.style.display = "block";
+      section.style.display = "none";
+    });
+
+    getstart3.addEventListener("click", function() {
+      section2.style.display = "none";
+      section3.style.display = "block";
+    });
+    
+    getstart4.addEventListener("click", function() {
+      section.style.display = "none";
+      section3.style.display = "block";
+    });
+
+  </script>
+  {% endif %}
+  
+  {% endblock %}
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/typed.js/typed.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main2.js' %}"></script>
+
+</body>
+
+</html>

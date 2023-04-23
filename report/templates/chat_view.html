@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenAI Chat</title>
+    <!-- Chargement des fichiers CSS Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704nRxyk1a4VTzFk3X6X5U6NlDTbYhZYgNJQ5o5U5"
+          crossorigin="anonymous">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="mb-4">OpenAI Chat</h1>
+        <!-- Zone d'affichage des messages -->
+        <div id="messages" class="mb-4"></div>
+        <!-- Formulaire de saisie de texte -->
+        <form id="chat-form">
+            <div class="input-group">
+                <input type="text" class="form-control" id="input" placeholder="Votre message...">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Chargement des fichiers JavaScript Bootstrap et jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.3/dist/umd/popper.min.js"
+            integrity="sha384-G5z5VyJyX2+MYRT8Wkx4jK/vJ1nHL+trvIe4ZOf5N5eNrt5QBXv1y5ATWiv/POiB"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704nRxyk1a4VTzFk3X6X5U6NlDTbYhZYgNJQ5o5U5"
+            crossorigin="anonymous"></script>
+    <!-- Chargement du fichier JavaScript personnalisé -->
+    <script>
+        const form = document.querySelector('#chat-form');
+const input = document.querySelector('#chat-input');
+const messages = document.querySelector('#chat-messages');
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const userMessage = input.value.trim();
+  if (userMessage === '') {
+    return;
+  }
+  sendMessage(userMessage);
+  input.value = '';
+});
+
+async function sendMessage(userMessage) {
+  messages.insertAdjacentHTML('beforeend', `<div class="user-message">${userMessage}</div>`);
+  const botMessage = await getBotResponse(userMessage);
+  messages.insertAdjacentHTML('beforeend', `<div class="bot-message">${botMessage}</div>`);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+async function getBotResponse(userMessage) {
+  const response = await fetch('/api/chat/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: userMessage })
+  });
+  const data = await response.json();
+  return data.message;
+}
+
+    </script>
+</body>
+</html>
